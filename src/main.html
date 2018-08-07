@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <script>
+        delete window.module;
+        const {
+            ipcRenderer
+        } = require('electron');
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/velocity.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/titleBarControl.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+
+<body>
+    <div class="header">
+        <div class="notification">
+            <div class="material-icons notificationIcon">
+                notifications
+            </div>
+            <div class="notificationContent">
+                <div class="notificationInner">
+                    This is a notification!
+                </div>
+            </div>
+        </div>
+        <div class="time">
+            00:00
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="menuItems">
+            <div class="addGameItem menuItem selectedMenuItem" id="addGameItem">
+                <div class="gameItemArt">
+                    <div class="material-icons gameItemIcon">
+                        add
+                    </div>
+                </div>
+                <div class="title">
+                    Add a game
+                </div>
+            </div>
+            <div class="settingsItem menuItem" id="settingsItem">
+                <div class="gameItemArt">
+                    <div class="material-icons gameItemIcon">
+                        settings
+                    </div>
+                </div>
+                <div class="title">
+                    Settings
+                </div>
+            </div>
+        </div>
+        <div class="menuItemDetail">
+            <div class="menuDetailTitle">Add a game</div>
+            <div class="menuDetailMessage">
+                Add a game by choosing a location.
+            </div>
+
+        </div>
+    </div>
+    <div class="addGame">
+        <div class="addGameContainer">
+            <div class="addGameTitle">Add Game</div>
+
+            <label for="location">Location</label>
+            <br>
+            <input id="location" type="text" placeholder="Location">
+            <div class="browsebutton" onclick="browseButton()">Browse</div>
+
+        </div>
+    </div>
+
+    <div class="popOutNotification">
+        <div class="material-icons popOutNotificationIcon">
+            notifications
+        </div>
+        <div class="popOutNotificationInner">
+            <div class="notificationTitle">Test Notification</div>
+            <div class="notificationMessage">Hi</div>
+        </div>
+    </div>
+</body>
+<script src="js/main.js"></script>
+<script src="js/MenuItems.js"></script>
+<script src="js/NotificationHandle.js"></script>
+<script src="js/TimeHandle.js"></script>
+<script src="js/AddGame.js"></script>
+
+</html>

@@ -1,0 +1,233 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0s;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)
+}
+
+.notification {
+    margin-top: 40px;
+    margin-left: 40px;
+    user-select: none;
+    cursor: default;
+    background: rgba(0, 0, 0, 0.164);
+    width: 350px;
+    height: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 5px;
+    float: left;
+}
+
+.notificationContent {
+    display: inline-block;
+    height: 100%;
+    width: 298px;
+    vertical-align: top;
+    overflow: hidden;
+}
+
+.notificationIcon {
+    color: white;
+    font-size: 45px;
+    white-space: nowrap;
+    display: inline-block;
+    width: 48px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1000;
+    margin-top: 3px;
+}
+
+.notificationInner {
+    display: inline-block;
+    color: white;
+    white-space: nowrap;
+    margin-left: 300px;
+    position: relative;
+    z-index: 1;
+    line-height: 3.2;
+}
+.time{
+    background: rgba(0, 0, 0, 0.164);
+    padding: 10px;
+    margin-top: 40px;
+    margin-right: 40px;
+    float: right;
+    font-size: 30px;
+    color: white;
+    user-select: none;
+    cursor: default;
+}
+.popOutNotification{
+    position: fixed;
+    z-index: 999999999;
+    background: rgba(255, 255, 255, 0.685);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 300px;
+    margin-top: 150px;
+    left: 0;
+    margin-left: -300px;
+    float: left;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: none;
+    cursor: default;
+    z-index: 99;
+}
+.popOutNotificationIcon{
+    display: inline-block;
+    color: rgb(59, 59, 59);
+    font-size: 45px;
+    margin-left: 20px;
+
+}
+.popOutNotificationInner{
+    display: inline-block;
+    vertical-align: top;
+    color: rgb(51, 51, 51);
+    width: 200px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.notificationTitle{
+    vertical-align: top;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(51, 51, 51);
+    text-overflow: ellipsis;
+}
+.content{
+    width: 100%;
+    height: 506px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+    position:absolute; /*it can be fixed too*/
+    left:0; right:0;
+    top:0; bottom:0;
+    margin:auto;
+
+    /*this to solve "the content will not be cut when the window is smaller than the content": */
+    max-width:100%;
+    max-height:100%;
+    overflow:auto;
+}
+.menuItems{
+    background-color: rgba(0, 0, 0, 0.171);
+}
+.menuItem{
+    height:350px;
+    width: 300px;
+    border: solid 3px rgba(0, 0, 0, 0.308);
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+}
+.selectedMenuItem{
+    border: solid 3px white; 
+    box-shadow: 6px 6px 17px 0px rgba(0, 0, 0, 0.25);
+    background-color: rgba(255, 255, 255, 0.137);
+}
+.gameItemIcon{
+font-size: 200px;
+margin-left: 50px;
+color: white;
+}
+.gameItemArt{
+    height: 270px;
+    margin-top: 30px;
+}
+.menuItem .title{
+    bottom: 0;
+    color: white;
+    margin: auto;
+    display: table;
+    background: rgba(255, 255, 255, 0.247);
+    width: 100%;
+    text-align: center;
+    padding-bottom: 14px;
+    padding-top: 15px;
+}
+
+.menuItemDetail{
+    float: left;
+    background-color: rgba(0, 0, 0, 0.171);
+    margin-left: 20px;
+    margin-top: 40px;
+    padding: 10px;
+    color: white;
+    top: 600px;
+
+}
+.menuDetailTitle{
+    font-weight: bold;
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+.menuDetailMessage{
+    font-size: 15px;
+}
+.addGame{
+    background-color: rgba(0, 0, 0, 0.61);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 999999;
+    display: none;
+
+}
+.addGameContainer{
+    width: 700px;
+    height: 800px;
+    background-color: rgba(255, 255, 255, 0.781);
+
+    position:absolute;
+    left:0; right:0;
+    top:0; bottom:0;
+    margin:auto;
+
+
+    max-width:100%;
+    max-height:100%;
+    overflow:auto;
+
+    text-align: center;
+    color: rgba(0, 0, 0, 0.678);
+    user-select: none;
+    cursor: default;
+}
+.addGameTitle{
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.browsebutton{
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.514);
+    padding: 5px;
+    color: white;
+    margin-left: 5px;
+    vertical-align: -5;
+}
+label{
+    margin-left: -180px;
+    font-size: 20px;
+}
+.addGameContainer input[type=text]{
+    margin-top: 5px;
+}
+input[type=text]{
+    padding: 10px;
+    border: none;
+    outline: none;
+    display: inline-block;
+    vertical-align: middle;
+}

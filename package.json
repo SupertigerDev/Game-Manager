@@ -1,0 +1,23 @@
+{
+  "name": "game-manager",
+  "version": "1.0.0",
+  "description": "NodeJS based game manager that allows you to play launch games and also play music (planned feature). Project isn't finished yet and is in alpha stage.",
+  "main": "index.js",
+  "dependencies": {
+    "electron-store": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supertiger1234/Game-Manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/supertiger1234/Game-Manager/issues"
+  },
+  "homepage": "https://github.com/supertiger1234/Game-Manager#readme"
+}
