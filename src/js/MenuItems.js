@@ -18,7 +18,7 @@ if (typeof store.get("gamesList") == "undefined") {
         name: "Settings"
     })
     store.set("gamesList", totalMenus)
-}else{
+} else {
     totalMenus = store.get("gamesList")
 }
 
@@ -44,26 +44,26 @@ $(document).keydown(function (e) {
             $("#" + totalMenus[selectedItem].div).addClass("selectedMenuItem")
 
             changedMenuItem()
-            if (selectedItem > 1){
+
             $(".menuItems").animate({
                 marginLeft: "-=330"
             }, 100, function () {
                 currentlySwitchingTimeOut = false
             })
-        }
+
 
         } else if (e.keyCode == 37) {
             if (typeof totalMenus[selectedItem - 1] == "undefined") {
                 return;
             }
-            if (selectedItem > 1){
-                $(".menuItems").animate({
-                    marginLeft: "+=330"
-                }, 100, function () {
-                    currentlySwitchingTimeOut = false
-                })
 
-            }
+            $(".menuItems").animate({
+                marginLeft: "+=330"
+            }, 100, function () {
+                currentlySwitchingTimeOut = false
+            })
+
+
             selectedItem--;
 
             $(".menuItem").removeClass("selectedMenuItem");
@@ -71,7 +71,7 @@ $(document).keydown(function (e) {
 
             changedMenuItem()
 
-            
+
         }
     }
 
@@ -86,7 +86,7 @@ function changedMenuItem() {
     } else if (totalMenus[selectedItem].name == "Add a game") {
         title = totalMenus[selectedItem].name
         message = "To add a game, click on this icon and Choose an executable file."
-    }else{
+    } else {
         title = totalMenus[selectedItem].name
         message = "No message"
     }
@@ -97,19 +97,20 @@ function changedMenuItem() {
         $(".menuItemDetail").fadeIn(300)
     })
 }
-function openGame(){
-    if(totalMenus[selectedItem].name == "Add a game"){
 
-        request(url, (error, response, body)=> {
+function openGame() {
+    if (totalMenus[selectedItem].name == "Add a game") {
+
+        request(url, (error, response, body) => {
             if (!error && response.statusCode === 200) {
-              jsonGamesList = JSON.parse(body)
-              $(".addGame").fadeIn();
-              console.log("Got a response ")
+                jsonGamesList = JSON.parse(body)
+                $(".addGame").fadeIn();
+                console.log("Got a response ")
             } else {
-              console.log("Got an error: ", error, ", status code: ", response.statusCode)
-              $('.somethingWentWrongPopout').fadeIn()
+                console.log("Got an error: ", error, ", status code: ", response.statusCode)
+                $('.somethingWentWrongPopout').fadeIn()
             }
-          })
+        })
 
 
     }
