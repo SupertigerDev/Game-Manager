@@ -21,6 +21,13 @@ body {
     padding: 5px;
     float: left;
 }
+.notificationMessage{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 195px;
+    display: block;
+    overflow: hidden
+}
 
 .notificationContent {
     display: inline-block;
@@ -120,6 +127,7 @@ body {
     overflow:auto;
 }
 .menuItems{
+    padding-left: 350px;
     background-color: rgba(0, 0, 0, 0.171);
 }
 .menuItem{
@@ -159,7 +167,7 @@ color: white;
 .menuItemDetail{
     float: left;
     background-color: rgba(0, 0, 0, 0.171);
-    margin-left: 20px;
+    margin-left: 700px;
     margin-top: 40px;
     padding: 10px;
     color: white;
@@ -175,7 +183,7 @@ color: white;
     font-size: 15px;
 }
 .addGame{
-    background-color: rgba(0, 0, 0, 0.61);
+    background-color: rgba(0, 0, 0, 0.795);
     height: 100%;
     width: 100%;
     position: fixed;
@@ -184,8 +192,8 @@ color: white;
 
 }
 .addGameContainer{
-    width: 700px;
-    height: 800px;
+    width: 500px;
+    height: 200px;
     background-color: rgba(255, 255, 255, 0.781);
 
     position:absolute;
@@ -230,4 +238,117 @@ input[type=text]{
     outline: none;
     display: inline-block;
     vertical-align: middle;
+}
+.noticePopOut{
+    background-color: rgba(0, 0, 0, 0.61);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 999999999999999;
+    display: none;
+
+}
+.noticeInner{
+    width: 400px;
+    height: 250px;
+    background-color: rgba(255, 255, 255, 0.781);
+
+    position:absolute;
+    left:0; right:0;
+    top:0; bottom:0;
+    margin:auto;
+    padding: 10px;
+
+    max-width:100%;
+    max-height:100%;
+    overflow:auto;
+
+    text-align: center;
+    color: rgba(0, 0, 0, 0.678);
+    user-select: none;
+    cursor: default;
+
+}
+.noticeButton{
+    background-color: rgb(255, 72, 72);
+    color: white;
+    padding: 10px;
+    display: inline-block;
+}
+
+
+.somethingWentWrongPopout{
+    background-color: rgba(0, 0, 0, 0.61);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 999999;
+    display: none;
+
+}
+.somethingWentWrongInner{
+    width: 400px;
+    height: 250px;
+    background-color: rgba(255, 255, 255, 0.781);
+
+    position:absolute;
+    left:0; right:0;
+    top:0; bottom:0;
+    margin:auto;
+    padding: 10px;
+
+    max-width:100%;
+    max-height:100%;
+    overflow:auto;
+
+    text-align: center;
+    color: rgba(0, 0, 0, 0.678);
+    user-select: none;
+    cursor: default;
+
+}
+.somethingWentWrongButton{
+    background-color: rgb(255, 72, 72);
+    color: white;
+    padding: 10px;
+    display: inline-block;
+}
+
+
+
+.detectFailPopOut{
+    background-color: rgba(0, 0, 0, 0.61);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 999999;
+    display: none;
+
+}
+.detectFailInner{
+    width: 400px;
+    height: 250px;
+    background-color: rgba(255, 255, 255, 0.781);
+
+    position:absolute;
+    left:0; right:0;
+    top:0; bottom:0;
+    margin:auto;
+    padding: 10px;
+
+    max-width:100%;
+    max-height:100%;
+    overflow:auto;
+
+    text-align: center;
+    color: rgba(0, 0, 0, 0.678);
+    user-select: none;
+    cursor: default;
+
+}
+.makeMyOwnButton{
+    background-color: rgb(255, 72, 72);
+    color: white;
+    padding: 10px;
+    display: inline-block;
 }

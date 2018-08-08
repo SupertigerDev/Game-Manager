@@ -1,12 +1,13 @@
 const Store = require('electron-store');
+const path = require('path')
 const store = new Store();
-
+var jsonGamesList;
 var selectedItem;
 
 var totalMenus = []
 
 var currentlySwitchingTimeOut = false;
-
+store.delete("gamesList")
 if (typeof store.get("gamesList") == "undefined") {
     totalMenus.push({
         div: "addGameItem",
@@ -16,11 +17,12 @@ if (typeof store.get("gamesList") == "undefined") {
         div: "settingsItem",
         name: "Settings"
     })
-
-    selectedItem = 0;
-
+    store.set("gamesList", totalMenus)
+}else{
+    totalMenus = store.get("gamesList")
 }
 
+selectedItem = 0;
 $(document).keydown(function (e) {
 
 
@@ -42,18 +44,26 @@ $(document).keydown(function (e) {
             $("#" + totalMenus[selectedItem].div).addClass("selectedMenuItem")
 
             changedMenuItem()
-
+            if (selectedItem > 1){
             $(".menuItems").animate({
                 marginLeft: "-=330"
             }, 100, function () {
                 currentlySwitchingTimeOut = false
             })
+        }
 
         } else if (e.keyCode == 37) {
             if (typeof totalMenus[selectedItem - 1] == "undefined") {
                 return;
             }
+            if (selectedItem > 1){
+                $(".menuItems").animate({
+                    marginLeft: "+=330"
+                }, 100, function () {
+                    currentlySwitchingTimeOut = false
+                })
 
+            }
             selectedItem--;
 
             $(".menuItem").removeClass("selectedMenuItem");
@@ -61,11 +71,7 @@ $(document).keydown(function (e) {
 
             changedMenuItem()
 
-            $(".menuItems").animate({
-                marginLeft: "+=330"
-            }, 100, function () {
-                currentlySwitchingTimeOut = false
-            })
+            
         }
     }
 
@@ -80,6 +86,9 @@ function changedMenuItem() {
     } else if (totalMenus[selectedItem].name == "Add a game") {
         title = totalMenus[selectedItem].name
         message = "To add a game, click on this icon and Choose an executable file."
+    }else{
+        title = totalMenus[selectedItem].name
+        message = "No message"
     }
 
     $(".menuItemDetail").fadeOut(300, function () {
@@ -90,6 +99,18 @@ function changedMenuItem() {
 }
 function openGame(){
     if(totalMenus[selectedItem].name == "Add a game"){
-        $(".addGame").fadeIn();
+
+        request(url, (error, response, body)=> {
+            if (!error && response.statusCode === 200) {
+              jsonGamesList = JSON.parse(body)
+              $(".addGame").fadeIn();
+              console.log("Got a response ")
+            } else {
+              console.log("Got an error: ", error, ", status code: ", response.statusCode)
+              $('.somethingWentWrongPopout').fadeIn()
+            }
+          })
+
+
     }
 }

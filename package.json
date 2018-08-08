@@ -4,7 +4,10 @@
   "description": "NodeJS based game manager that allows you to play launch games and also play music (planned feature). Project isn't finished yet and is in alpha stage.",
   "main": "index.js",
   "dependencies": {
-    "electron-store": "^2.0.0"
+    "electron-store": "^2.0.0",
+    "regedit": "^3.0.0",
+    "request": "^2.87.0",
+    "requests": "^0.2.2"
   },
   "devDependencies": {},
   "scripts": {

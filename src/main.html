@@ -13,7 +13,6 @@
     <script src="js/velocity.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="js/titleBarControl.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css" />
 </head>
 
@@ -74,6 +73,32 @@
             <input id="location" type="text" placeholder="Location">
             <div class="browsebutton" onclick="browseButton()">Browse</div>
 
+        </div>
+    </div>
+
+
+    <div class="somethingWentWrongPopout">
+        <div class="somethingWentWrongInner">
+            <h1>Something went wrong</h1>
+            <p>Try again later.</p>
+        <div class="somethingWentWrongButton" onclick="$('.somethingWentWrongPopout').fadeOut()">OK :(</div>
+        </div>
+    </div>
+
+
+    <div class="detectFailPopOut">
+        <div class="detectFailInner">
+            <h2>Your game could not be detected :(</h2>
+            <p>Try finding it your self in the list or make your own.</p>
+        <div class="makeMyOwnButton" onclick="makeMyOwnButton()">Make my own</div>
+        </div>
+    </div>
+
+    <div class="noticePopOut">
+        <div class="noticeInner">
+            <h1>Note!</h1>
+            <p>When browsing a game, make sure you are choosing an .exe file. These exe files can be found in the steamapps/common folder.</p>
+        <div class="noticeButton" onclick="understoodButton()">Understood</div>
         </div>
     </div>
 
