@@ -32,7 +32,7 @@ selectedItem = 0;
 $(document).keydown(function (e) {
     fadeOutIdle()
 
-    if (gamelistUpdated == false){
+    if (gamelistUpdated == false) {
         return;
     }
     if (currentScreen == "homeScreen") {
@@ -89,7 +89,7 @@ $(document).keydown(function (e) {
 function changedMenuItem() {
     let message;
     let title;
-
+    nextMenuSoundPlay()
     if (totalMenus[selectedItem].name == "Settings") {
         $('.backgroundImage').fadeOut(400);
         title = totalMenus[selectedItem].name
@@ -102,7 +102,7 @@ function changedMenuItem() {
 
 
         $('<img/>').attr('src', totalMenus[selectedItem].background[0]).on('load', function () {
-            $(this).remove(); // prevent memory leaks as @benweet suggested
+            $(this).remove(); // prevent memory leaks.
             $('.backgroundImage').fadeOut(400, function () {
                 $('.backgroundImage').css('background-image', 'linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)),url(' + getRandomArray(totalMenus[selectedItem].background) + ')');
 
@@ -122,26 +122,31 @@ function changedMenuItem() {
         $(".menuDetailMessage").text(message)
         $(".menuItemDetail").fadeIn(300)
     })
- 
+
 }
 
 function openGame() {
+    GameOpenSound()
     if (totalMenus[selectedItem].name == "Add a game") {
 
         request(url, (error, response, body) => {
             if (!error && response.statusCode === 200) {
                 jsonGamesList = JSON.parse(body)
+                currentScreen = "Add a game"
                 $(".addGame").fadeIn();
                 console.log("Got a response ")
             } else {
                 console.log("Got an error: ", error, ", status code: ", response.statusCode)
                 $('.somethingWentWrongPopout').fadeIn()
+                currentScreen = "somethingWentWrong"
             }
         })
 
 
-    } else {
-
+    } else if (totalMenus[selectedItem].name == "Settings") {
+        //add settings menu in the future.
+    }else{
+        currentScreen = "In Game"
         child = execFile(totalMenus[selectedItem].path, function (error, stdout, stderr) {
             if (error) {
                 //console.log(error.stack); 
@@ -149,10 +154,12 @@ function openGame() {
                 //console.log('Signal received: '+ 
                 //       error.signal);
             }
+
             //console.log('Child Process stdout: '+ stdout);
             //console.log('Child Process stderr: '+ stderr);
         });
         child.on('exit', function (code) {
+            currentScreen = 'homeScreen'
             //console.log('Child process exited '+
             //    'with exit code '+ code);
             //alert('exit');
@@ -211,20 +218,40 @@ function AddGamesToDiv() {
 }
 
 function getRandomArray(arr) {
-    if (typeof arr == "undefined"){
+    if (typeof arr == "undefined") {
         return "";
     }
     return arr[Math.floor(Math.random() * (arr.length))]
 }
 
-function fadeOutIdle(){
+function fadeOutIdle() {
     $(".content").animate({
         opacity: 1
-    }, { duration: 1000, queue: false })
+    }, {
+        duration: 1000,
+        queue: false
+    })
     clearTimeout(fadeOutTimerID);
     fadeOutTimerID = setTimeout(() => {
         $(".content").animate({
             opacity: 0
-        }, { duration: 3000, queue: false })
+        }, {
+            duration: 3000,
+            queue: false
+        })
     }, 10000);
+}
+
+function nextMenuSoundPlay() {
+    var audio = new Audio('sounds/MenuMoveSound.mp3');
+    audio.play();
+}
+
+function bootUpSound(){
+    var audio = new Audio('sounds/BootUp.mp3');
+    audio.play();
+}
+function GameOpenSound(){
+    var audio = new Audio('sounds/GameOpenSound.mp3');
+    audio.play();
 }
