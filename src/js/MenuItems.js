@@ -10,6 +10,7 @@ var jsonGamesList;
 var selectedItem;
 var gamelistUpdated = false;
 var totalMenus = []
+var fadeOutTimerID;
 
 var currentlySwitchingTimeOut = false;
 if (typeof store.get("gamesList") == "undefined") {
@@ -29,6 +30,7 @@ if (typeof store.get("gamesList") == "undefined") {
 
 selectedItem = 0;
 $(document).keydown(function (e) {
+    fadeOutIdle()
 
     if (gamelistUpdated == false){
         return;
@@ -87,6 +89,7 @@ $(document).keydown(function (e) {
 function changedMenuItem() {
     let message;
     let title;
+
     if (totalMenus[selectedItem].name == "Settings") {
         $('.backgroundImage').fadeOut(400);
         title = totalMenus[selectedItem].name
@@ -119,6 +122,7 @@ function changedMenuItem() {
         $(".menuDetailMessage").text(message)
         $(".menuItemDetail").fadeIn(300)
     })
+ 
 }
 
 function openGame() {
@@ -175,7 +179,7 @@ function updateGamesList() {
                 for (var i in totalMenus) {
                     if (field == totalMenus[i].name) {
                         totalMenus[i].background = newGameList[field].background
-                        totalMenus[i].logo = newGameList[field].logo
+                        totalMenus[i].icon = newGameList[field].logo
                         totalMenus[i].description = newGameList[field].description
                     }
                 }
@@ -199,10 +203,11 @@ function AddGamesToDiv() {
     for (let index = 0; index < totalMenus.length; index++) {
         const element = totalMenus[index];
         if (index > 1) {
-            $(".menuItems").append('<div class="menuItem" game="' + element.name + '" style="background-image: url(' + element.icon + ');background-size: 100%;background-position: center;background-repeat: no-repeat;" id="' + element.div + '"><div style="margin-top: 300px;" class="title">Start</div></div>')
-
+            $(".menuItems").append('<div class="menuItem" game="' + element.name + '" style="background-image: url(' + element.icon + ');background-size: 100%;background-position: center;background-repeat: no-repeat;" id="' + element.div + '"><div style="margin-top: 250px;" class="title">Start</div></div>')
+            console.log(element)
         }
     }
+    fadeOutIdle()
 }
 
 function getRandomArray(arr) {
@@ -210,4 +215,16 @@ function getRandomArray(arr) {
         return "";
     }
     return arr[Math.floor(Math.random() * (arr.length))]
+}
+
+function fadeOutIdle(){
+    $(".content").animate({
+        opacity: 1
+    }, { duration: 1000, queue: false })
+    clearTimeout(fadeOutTimerID);
+    fadeOutTimerID = setTimeout(() => {
+        $(".content").animate({
+            opacity: 0
+        }, { duration: 3000, queue: false })
+    }, 10000);
 }

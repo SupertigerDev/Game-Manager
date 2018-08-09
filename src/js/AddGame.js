@@ -61,7 +61,7 @@ function addGame(name, icon, backgroundArr,description ,path) {
     store.set("gamesList", totalMenus)
     AddToNotificationQueue("Game Found", name + " has been found!")
     $(".addGame").fadeOut();
-    $(".menuItems").append('<div class="menuItem" game="'+name+'" style="background-image: url('+icon+');background-size: 100%;background-position: center;background-repeat: no-repeat;" id="'+gameID+'"><div style="margin-top: 300px;" class="title">Start</div></div>')
+    $(".menuItems").append('<div class="menuItem" game="'+name+'" style="background-image: url('+icon+');background-size: 100%;background-position: center;background-repeat: no-repeat;" id="'+gameID+'"><div style="margin-top: 250px;" class="title">Start</div></div>')
 }
 
 function gameIDGenerator(){

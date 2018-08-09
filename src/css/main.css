@@ -140,7 +140,7 @@ body {
 }
 
 .menuItem {
-    height: 350px;
+    height: 300px;
     width: 300px;
     border: solid 3px rgba(0, 0, 0, 0.308);
     display: inline-block;
@@ -169,12 +169,12 @@ body {
 .gameItemIcon {
     font-size: 200px;
     margin-left: 50px;
-    margin-top: 35px;
+    margin-top: 10px;
     color: white;
 }
 
 .gameItemArt {
-    height: 270px;
+    height: 220px;
     margin-top: 30px;
 }
 
@@ -183,7 +183,7 @@ body {
     color: white;
     margin: auto;
     display: table;
-    background: rgba(255, 255, 255, 0.247);
+    background: rgba(0, 0, 0, 0.81);
     width: 100%;
     text-align: center;
     padding-bottom: 14px;
@@ -393,4 +393,8 @@ input[type=text] {
     background-size: cover;
     background-repeat: no-repeat;
 
+}
+.addGameItem .title, .settingsItem .title {
+    background: #ffffff;
+    color: black;
 }
