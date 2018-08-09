@@ -21,7 +21,8 @@ body {
     padding: 5px;
     float: left;
 }
-.notificationMessage{
+
+.notificationMessage {
     white-space: nowrap;
     text-overflow: ellipsis;
     width: 195px;
@@ -58,7 +59,8 @@ body {
     z-index: 1;
     line-height: 3.2;
 }
-.time{
+
+.time {
     background: rgba(0, 0, 0, 0.164);
     padding: 10px;
     margin-top: 40px;
@@ -69,7 +71,8 @@ body {
     user-select: none;
     cursor: default;
 }
-.popOutNotification{
+
+.popOutNotification {
     position: fixed;
     z-index: 999999999;
     background: rgba(255, 255, 255, 0.685);
@@ -80,79 +83,102 @@ body {
     left: 0;
     margin-left: -300px;
     float: left;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     user-select: none;
     cursor: default;
     z-index: 99;
 }
-.popOutNotificationIcon{
+
+.popOutNotificationIcon {
     display: inline-block;
     color: rgb(59, 59, 59);
     font-size: 45px;
     margin-left: 20px;
-
 }
-.popOutNotificationInner{
+
+.popOutNotificationInner {
     display: inline-block;
     vertical-align: top;
     color: rgb(51, 51, 51);
     width: 200px;
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.notificationTitle{
+
+.notificationTitle {
     vertical-align: top;
     font-weight: bold;
     font-size: 20px;
     color: rgb(51, 51, 51);
     text-overflow: ellipsis;
 }
-.content{
+
+.content {
     width: 100%;
     height: 506px;
     padding-bottom: 20px;
     padding-top: 20px;
-
-    position:absolute; /*it can be fixed too*/
-    left:0; right:0;
-    top:0; bottom:0;
-    margin:auto;
-
+    position: absolute;
+    /*it can be fixed too*/
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     /*this to solve "the content will not be cut when the window is smaller than the content": */
-    max-width:100%;
-    max-height:100%;
-    overflow:auto;
+    max-width: 100%;
+    max-height: 100%;
 }
-.menuItems{
+
+.menuItems {
     padding-left: 350px;
     background-color: rgba(0, 0, 0, 0.171);
+    white-space: nowrap;
 }
-.menuItem{
-    height:350px;
+
+.menuItem {
+    height: 350px;
     width: 300px;
     border: solid 3px rgba(0, 0, 0, 0.308);
     display: inline-block;
     vertical-align: top;
     margin-left: 20px;
+    transition: 0.5s;
 }
-.selectedMenuItem{
-    border: solid 3px white; 
+
+
+@keyframes border-pulsate {
+    0%   { border-color: rgba(0, 0, 0, 0.308);}
+    50%  {  border-color: rgb(255, 255, 255); }
+    100% {border-color: rgba(0, 0, 0, 0.308);}
+}
+
+.selectedMenuItem {
+    border: solid 3px white;
     box-shadow: 6px 6px 17px 0px rgba(0, 0, 0, 0.25);
     background-color: rgba(255, 255, 255, 0.137);
+    transform: scale(1.1);
+    animation: border-pulsate 1s infinite;
 }
-.gameItemIcon{
-font-size: 200px;
-margin-left: 50px;
-color: white;
+
+
+
+.gameItemIcon {
+    font-size: 200px;
+    margin-left: 50px;
+    margin-top: 35px;
+    color: white;
 }
-.gameItemArt{
+
+.gameItemArt {
     height: 270px;
     margin-top: 30px;
 }
-.menuItem .title{
+
+.menuItem .title {
     bottom: 0;
     color: white;
     margin: auto;
@@ -162,9 +188,15 @@ color: white;
     text-align: center;
     padding-bottom: 14px;
     padding-top: 15px;
+    opacity: 0;
+    transition: 0.5s;
 }
 
-.menuItemDetail{
+.selectedMenuItem .title {
+    opacity: 1;
+}
+
+.menuItemDetail {
     float: left;
     background-color: rgba(0, 0, 0, 0.171);
     margin-left: 700px;
@@ -172,52 +204,55 @@ color: white;
     padding: 10px;
     color: white;
     top: 600px;
-
+    width: 400px;
 }
-.menuDetailTitle{
+
+.menuDetailTitle {
     font-weight: bold;
     padding-bottom: 5px;
     font-size: 20px;
 }
-.menuDetailMessage{
+
+.menuDetailMessage {
     font-size: 15px;
 }
-.addGame{
+
+.addGame {
     background-color: rgba(0, 0, 0, 0.795);
     height: 100%;
     width: 100%;
     position: fixed;
     z-index: 999999;
     display: none;
-
 }
-.addGameContainer{
+
+.addGameContainer {
     width: 500px;
     height: 200px;
     background-color: rgba(255, 255, 255, 0.781);
-
-    position:absolute;
-    left:0; right:0;
-    top:0; bottom:0;
-    margin:auto;
-
-
-    max-width:100%;
-    max-height:100%;
-    overflow:auto;
-
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
     text-align: center;
     color: rgba(0, 0, 0, 0.678);
     user-select: none;
     cursor: default;
 }
-.addGameTitle{
+
+.addGameTitle {
     font-size: 30px;
     font-weight: bold;
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.browsebutton{
+
+.browsebutton {
     display: inline-block;
     background: rgba(0, 0, 0, 0.514);
     padding: 5px;
@@ -225,130 +260,137 @@ color: white;
     margin-left: 5px;
     vertical-align: -5;
 }
-label{
+
+label {
     margin-left: -180px;
     font-size: 20px;
 }
-.addGameContainer input[type=text]{
+
+.addGameContainer input[type=text] {
     margin-top: 5px;
 }
-input[type=text]{
+
+input[type=text] {
     padding: 10px;
     border: none;
     outline: none;
     display: inline-block;
     vertical-align: middle;
 }
-.noticePopOut{
+
+.noticePopOut {
     background-color: rgba(0, 0, 0, 0.61);
     height: 100%;
     width: 100%;
     position: fixed;
     z-index: 999999999999999;
     display: none;
-
 }
-.noticeInner{
+
+.noticeInner {
     width: 400px;
     height: 250px;
     background-color: rgba(255, 255, 255, 0.781);
-
-    position:absolute;
-    left:0; right:0;
-    top:0; bottom:0;
-    margin:auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     padding: 10px;
-
-    max-width:100%;
-    max-height:100%;
-    overflow:auto;
-
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
     text-align: center;
     color: rgba(0, 0, 0, 0.678);
     user-select: none;
     cursor: default;
-
 }
-.noticeButton{
+
+.noticeButton {
     background-color: rgb(255, 72, 72);
     color: white;
     padding: 10px;
     display: inline-block;
 }
 
-
-.somethingWentWrongPopout{
+.somethingWentWrongPopout {
     background-color: rgba(0, 0, 0, 0.61);
     height: 100%;
     width: 100%;
     position: fixed;
     z-index: 999999;
     display: none;
-
 }
-.somethingWentWrongInner{
+
+.somethingWentWrongInner {
     width: 400px;
     height: 250px;
     background-color: rgba(255, 255, 255, 0.781);
-
-    position:absolute;
-    left:0; right:0;
-    top:0; bottom:0;
-    margin:auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     padding: 10px;
-
-    max-width:100%;
-    max-height:100%;
-    overflow:auto;
-
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
     text-align: center;
     color: rgba(0, 0, 0, 0.678);
     user-select: none;
     cursor: default;
-
 }
-.somethingWentWrongButton{
+
+.somethingWentWrongButton {
     background-color: rgb(255, 72, 72);
     color: white;
     padding: 10px;
     display: inline-block;
 }
 
-
-
-.detectFailPopOut{
+.detectFailPopOut {
     background-color: rgba(0, 0, 0, 0.61);
     height: 100%;
     width: 100%;
     position: fixed;
     z-index: 999999;
     display: none;
-
 }
-.detectFailInner{
+
+.detectFailInner {
     width: 400px;
     height: 250px;
     background-color: rgba(255, 255, 255, 0.781);
-
-    position:absolute;
-    left:0; right:0;
-    top:0; bottom:0;
-    margin:auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     padding: 10px;
-
-    max-width:100%;
-    max-height:100%;
-    overflow:auto;
-
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
     text-align: center;
     color: rgba(0, 0, 0, 0.678);
     user-select: none;
     cursor: default;
-
 }
-.makeMyOwnButton{
+
+.makeMyOwnButton {
     background-color: rgb(255, 72, 72);
     color: white;
     padding: 10px;
     display: inline-block;
+}
+.backgroundImage{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }

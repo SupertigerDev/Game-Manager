@@ -1,8 +1,6 @@
 var elerem = require('electron').remote;
 var dialog = elerem.dialog;
 
-const request = require('request'),
-    url = 'https://www.jasonbase.com/things/WYJw.json'
 
 
 
@@ -30,7 +28,7 @@ function understoodButton() {
 
                 if (jsonGamesList[gameName].names[i] == path.parse(chosenLocation[0]).name){
                     found = true;
-                    addGame(gameName,jsonGamesList[gameName].logo,jsonGamesList[gameName].background, chosenLocation[0])
+                    addGame(gameName,jsonGamesList[gameName].logo,jsonGamesList[gameName].background,jsonGamesList[gameName].description ,chosenLocation[0])
                     break;
                 }
             }
@@ -43,7 +41,7 @@ function understoodButton() {
 
     }
 }
-function addGame(name, icon, backgroundArr, path) {
+function addGame(name, icon, backgroundArr,description ,path) {
 
     if (gameExists(name)){
         $(".addGame").fadeOut();
@@ -56,13 +54,14 @@ function addGame(name, icon, backgroundArr, path) {
         name: name,
         icon: icon,
         background: backgroundArr,
+        description: description,
         path: path,
 
     })
     store.set("gamesList", totalMenus)
     AddToNotificationQueue("Game Found", name + " has been found!")
     $(".addGame").fadeOut();
-    $(".menuItems").append('<div class="menuItem" game="'+name+'" style="background-image: url('+icon+');background-size: 100%;background-position: center;background-repeat: no-repeat;" id="'+gameID+'"><div style="margin-top: 299px;" class="title">Start</div></div>')
+    $(".menuItems").append('<div class="menuItem" game="'+name+'" style="background-image: url('+icon+');background-size: 100%;background-position: center;background-repeat: no-repeat;" id="'+gameID+'"><div style="margin-top: 300px;" class="title">Start</div></div>')
 }
 
 function gameIDGenerator(){
