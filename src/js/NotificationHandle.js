@@ -45,7 +45,7 @@ function sendNotification(title, message, icon) {
     let iconDiv = $(".popOutNotificationIcon")
     titleDiv.text(title)
     messageDiv.text(message)
-
+    notifySound()
     mainDiv.animate({
         marginLeft: 0
     }, function () {
@@ -107,3 +107,8 @@ function AddToNotificationQueue(title, message, icon) {
 setTimeout(() => {
     AddToNotificationQueue("Game Manager - Tips", "Press \"N\" on your keyboard to read all or dismiss notifications. ", "icon1")
 }, 10000);
+
+function notifySound(){
+    var audio = new Audio('sounds/NotifySound.mp3');
+    audio.play();
+}

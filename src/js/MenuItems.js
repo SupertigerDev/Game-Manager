@@ -3,7 +3,7 @@ var execFile = require('child_process').execFile,
     child;
 const request = require('request'),
     url = 'https://www.jasonbase.com/things/WYJw.json'
-
+    bootUpSound()
 const path = require('path')
 const store = new Store();
 var jsonGamesList;
@@ -174,10 +174,10 @@ updateGamesList()
 function updateGamesList() {
 
     if (totalMenus.length <= 2) {
+        gamelistUpdated = true;
         return;
     }
 
-    AddToNotificationQueue("Game List", "Updating games list...", "icon")
     request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
             let newGameList = JSON.parse(body)
@@ -254,4 +254,9 @@ function bootUpSound(){
 function GameOpenSound(){
     var audio = new Audio('sounds/GameOpenSound.mp3');
     audio.play();
+}
+function deleteAll(){
+
+    store.delete("gamesList")
+    console.log("Deleted all games!")
 }

@@ -73,6 +73,10 @@
             <br>
             <input id="location" type="text" placeholder="Location">
             <div class="browsebutton" onclick="browseButton()">Browse</div>
+            <div>
+                <div class="button" onclick="addButton()">Add</div>
+                <div class="button closeButton" onclick="$('.addGame').fadeOut(); currentScreen = 'homeScreen';">Close</div>
+            </div>
 
         </div>
     </div>
@@ -82,7 +86,7 @@
         <div class="somethingWentWrongInner">
             <h1>Something went wrong</h1>
             <p>Try again later.</p>
-        <div class="somethingWentWrongButton" onclick="$('.somethingWentWrongPopout').fadeOut(); currentScreen = 'homeScreen'">OK :(</div>
+            <div class="somethingWentWrongButton" onclick="$('.somethingWentWrongPopout').fadeOut(); currentScreen = 'homeScreen'">OK :(</div>
         </div>
     </div>
 
@@ -91,15 +95,24 @@
         <div class="detectFailInner">
             <h2>Your game could not be detected :(</h2>
             <p>Try finding it your self in the list or make your own.</p>
-        <div class="makeMyOwnButton" onclick="makeMyOwnButton()">Make my own</div>
+            <div class="gamesList">
+                <textarea class="searchGameBox" placeholder="Search game"></textarea>
+                <div class="gameSearchList">
+
+                    
+                </div>
+            </div>
+            <div class="makeMyOwnButton" onclick="makeMyOwnButton()">Make my own</div>
         </div>
     </div>
 
     <div class="noticePopOut">
         <div class="noticeInner">
             <h1>Note!</h1>
-            <p>When browsing a game, make sure you are choosing an .exe file. These exe files can be found in the steamapps/common folder.</p>
-        <div class="noticeButton" onclick="understoodButton()">Understood</div>
+            <p>When browsing a game, make sure you are choosing an .exe file. These exe files can be found in the steamapps/common
+                folder.
+            </p>
+            <div class="noticeButton" onclick="understoodButton()">Understood</div>
         </div>
     </div>
 
@@ -118,5 +131,6 @@
 <script src="js/MenuItems.js"></script>
 <script src="js/TimeHandle.js"></script>
 <script src="js/AddGame.js"></script>
+<script src="js/SearchForGames.js"></script>
 
 </html>
