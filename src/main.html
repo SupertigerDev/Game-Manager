@@ -1,12 +1,6 @@
 <html>
 
 <head>
-    <script>
-        delete window.module;
-        const {
-            ipcRenderer
-        } = require('electron');
-    </script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,8 +23,14 @@
                 </div>
             </div>
         </div>
+
         <div class="time">
             00:00
+        </div>
+        <div class="closeManagerButton" onclick="nw.App.closeAllWindows();">
+            <i class="material-icons closeManagerIcon">
+                power_settings_new
+                </i>
         </div>
     </div>
 
@@ -99,7 +99,7 @@
                 <textarea class="searchGameBox" placeholder="Search game"></textarea>
                 <div class="gameSearchList">
 
-                    
+
                 </div>
             </div>
             <div class="makeMyOwnButton" onclick="makeMyOwnButton()">Make my own</div>
@@ -113,6 +113,7 @@
                 folder.
             </p>
             <div class="noticeButton" onclick="understoodButton()">Understood</div>
+            <input style="display:none;" id="LocateGame" type="file" />
         </div>
     </div>
 
@@ -127,10 +128,14 @@
     </div>
 </body>
 <script src="js/main.js"></script>
+<script src="js/UserDataManager.js"></script>
 <script src="js/NotificationHandle.js"></script>
 <script src="js/MenuItems.js"></script>
 <script src="js/TimeHandle.js"></script>
+
 <script src="js/AddGame.js"></script>
+
 <script src="js/SearchForGames.js"></script>
+
 
 </html>

@@ -1,11 +1,11 @@
-const Store = require('electron-store');
+//const Store = require('electron-store');
 var execFile = require('child_process').execFile,
     child;
 const request = require('request'),
     url = 'https://www.jasonbase.com/things/WYJw.json'
-    bootUpSound()
+bootUpSound()
 const path = require('path')
-const store = new Store();
+//const store = new Store();
 var jsonGamesList;
 var selectedItem;
 var gamelistUpdated = false;
@@ -13,20 +13,27 @@ var totalMenus = []
 var fadeOutTimerID;
 
 var currentlySwitchingTimeOut = false;
-if (typeof store.get("gamesList") == "undefined") {
-    totalMenus.push({
-        div: "addGameItem",
-        name: "Add a game"
-    })
-    totalMenus.push({
-        div: "settingsItem",
-        name: "Settings"
-    })
-    store.set("gamesList", totalMenus)
-} else {
-    totalMenus = store.get("gamesList")
 
-}
+getSettings("gameList", function (cb) {
+    if (typeof cb == "undefined") {
+        totalMenus.push({
+            div: "addGameItem",
+            name: "Add a game"
+        })
+        totalMenus.push({
+            div: "settingsItem",
+            name: "Settings"
+        })
+        saveSettings("gameList", totalMenus, function () {
+            console.log('Settings saved');
+        });
+
+    } else {
+        totalMenus = cb
+    }
+    updateGamesList()
+})
+
 
 selectedItem = 0;
 $(document).keydown(function (e) {
@@ -145,7 +152,7 @@ function openGame() {
 
     } else if (totalMenus[selectedItem].name == "Settings") {
         //add settings menu in the future.
-    }else{
+    } else {
         currentScreen = "In Game"
         child = execFile(totalMenus[selectedItem].path, function (error, stdout, stderr) {
             if (error) {
@@ -169,7 +176,7 @@ function openGame() {
         });
     }
 }
-updateGamesList()
+
 
 function updateGamesList() {
 
@@ -191,7 +198,9 @@ function updateGamesList() {
                     }
                 }
             }
-            store.set("gamesList", totalMenus)
+            saveSettings("gameList", totalMenus, function () {
+                console.log('Settings saved');
+            });
             AddToNotificationQueue("Game List", "Game list update successful!", "icon")
             gamelistUpdated = true;
             console.log("Got a response ")
@@ -247,15 +256,17 @@ function nextMenuSoundPlay() {
     audio.play();
 }
 
-function bootUpSound(){
+function bootUpSound() {
     var audio = new Audio('sounds/BootUp.mp3');
     audio.play();
 }
-function GameOpenSound(){
+
+function GameOpenSound() {
     var audio = new Audio('sounds/GameOpenSound.mp3');
     audio.play();
 }
-function deleteAll(){
+
+function deleteAll() {
 
     store.delete("gamesList")
     console.log("Deleted all games!")

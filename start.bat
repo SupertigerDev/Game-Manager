@@ -1,2 +1,0 @@
-electron index.js
-pause

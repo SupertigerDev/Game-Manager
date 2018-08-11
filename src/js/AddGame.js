@@ -1,44 +1,34 @@
-var elerem = require('electron').remote;
-var dialog = elerem.dialog;
-
-
-
-
-
 function browseButton() {
     $(".noticePopOut").fadeIn();
-
-
 
 }
 
 function understoodButton() {
 
     $(".noticePopOut").fadeOut();
-    let chosenLocation = dialog.showOpenDialog({
-        properties: ['openFile']
-    })
 
-    if (chosenLocation) {
-        $("#location").val(chosenLocation[0])
-    }
+    chooseFile();
+
+
 }
 
 function addButton() {
     var found = false;
     let location = $("#location").val()
-    if (location.trim() ==""){return;}
+    if (location.trim() == "") {
+        return;
+    }
 
-        for (var gameName in jsonGamesList) {
-            for (var i in jsonGamesList[gameName].names) {
+    for (var gameName in jsonGamesList) {
+        for (var i in jsonGamesList[gameName].names) {
 
-                if (jsonGamesList[gameName].names[i].toLowerCase() == path.parse(location).name.toLowerCase()) {
-                    found = true;
-                    addGame(gameName, jsonGamesList[gameName].logo, jsonGamesList[gameName].background, jsonGamesList[gameName].description, location)
-                    break;
-                }
+            if (jsonGamesList[gameName].names[i].toLowerCase() == path.parse(location).name.toLowerCase()) {
+                found = true;
+                addGame(gameName, jsonGamesList[gameName].logo, jsonGamesList[gameName].background, jsonGamesList[gameName].description, location)
+                break;
             }
         }
+    }
     if (found == false) {
         $(".detectFailPopOut").fadeIn();
         $(".addGame").fadeOut();
@@ -64,7 +54,9 @@ function addGame(name, icon, backgroundArr, description, path) {
         path: path,
 
     })
-    store.set("gamesList", totalMenus)
+    saveSettings("gameList", totalMenus, function () {
+        console.log('Settings saved');
+    });
     AddToNotificationQueue("Game Found", name + " has been found!")
     $(".addGame").fadeOut();
     currentScreen = 'homeScreen'
@@ -82,4 +74,15 @@ function gameExists(name) {
         }
     }
     return false;
+}
+
+
+
+function chooseFile() {
+    var chooser = document.querySelector("#LocateGame");
+    chooser.addEventListener("change", function (evt) {
+        $("#location").val(this.value)
+    }, false);
+
+    chooser.click();
 }
