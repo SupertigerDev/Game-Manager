@@ -235,20 +235,10 @@ function getRandomArray(arr) {
 }
 
 function fadeOutIdle() {
-    $(".content").animate({
-        opacity: 1
-    }, {
-        duration: 1000,
-        queue: false
-    })
+    $(".content").css("opacity", "1")
     clearTimeout(fadeOutTimerID);
     fadeOutTimerID = setTimeout(() => {
-        $(".content").animate({
-            opacity: 0
-        }, {
-            duration: 3000,
-            queue: false
-        })
+        $(".content").css("opacity", "0")
     }, 20000);
 }
 
