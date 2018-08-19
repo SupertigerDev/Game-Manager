@@ -249,7 +249,7 @@ function fadeOutIdle() {
             duration: 3000,
             queue: false
         })
-    }, 10000);
+    }, 20000);
 }
 
 function nextMenuSoundPlay() {

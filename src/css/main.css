@@ -177,9 +177,9 @@ body {
 
 
 @keyframes border-pulsate {
-    0%   { border-color: rgba(0, 0, 0, 0.308);}
+    0%   { border-color: rgba(165, 165, 165, 0.308);}
     50%  {  border-color: rgb(255, 255, 255); }
-    100% {border-color: rgba(0, 0, 0, 0.308);}
+    100% {border-color: rgba(165, 165, 165, 0.308);}
 }
 
 .selectedMenuItem {

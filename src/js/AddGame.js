@@ -24,7 +24,7 @@ function addButton() {
     if (found == false) {
         $(".detectFailPopOut").fadeIn();
         $(".addGame").fadeOut();
-    }
+    }else
 
 }
 
@@ -36,6 +36,7 @@ function addGame(name, icon, backgroundArr, description, path) {
         AddToNotificationQueue("Game exists", name + " already exists! Try reopening Game Manager if you dont see your game.")
         return;
     }
+    fadeOutIdle()
     let gameID = "game-" + gameIDGenerator()
     totalMenus.push({
         div: gameID,
