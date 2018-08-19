@@ -24,7 +24,7 @@ function addButton() {
     if (found == false) {
         $(".detectFailPopOut").fadeIn();
         $(".addGame").fadeOut();
-    }else
+    }
 
 }
 
