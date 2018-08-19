@@ -1,16 +1,8 @@
 function browseButton() {
-    $(".noticePopOut").fadeIn();
-
-}
-
-function understoodButton() {
-
-    $(".noticePopOut").fadeOut();
-
     chooseFile();
 
-
 }
+
 
 function addButton() {
     var found = false;

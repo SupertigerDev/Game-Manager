@@ -8,130 +8,139 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script src="js/particles.min.js"></script>
 </head>
 
 <body>
-    <div class="backgroundImage"></div>
-    <div class="header">
-        <div class="notification">
-            <div class="material-icons notificationIcon">
+    <div class="allContent">
+        <div class="backgroundImage"></div>
+        <div class="header">
+            <div class="notification">
+                <div class="material-icons notificationIcon">
+                    notifications
+                </div>
+                <div class="notificationContent">
+                    <div class="notificationInner">
+                        This is a notification!
+                    </div>
+                </div>
+            </div>
+
+            <div class="time">
+                00:00
+            </div>
+            <div class="closeManagerButton" onclick="nw.App.closeAllWindows();">
+                <i class="material-icons closeManagerIcon">
+                    power_settings_new
+                </i>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="menuItems">
+                <div class="addGameItem menuItem selectedMenuItem" id="addGameItem">
+                    <div class="gameItemArt">
+                        <div class="material-icons gameItemIcon">
+                            add
+                        </div>
+                    </div>
+                    <div class="title">
+                        Add a game
+                    </div>
+                </div>
+                <div class="settingsItem menuItem" id="settingsItem">
+                    <div class="gameItemArt">
+                        <div class="material-icons gameItemIcon">
+                            settings
+                        </div>
+                    </div>
+                    <div class="title">
+                        Settings
+                    </div>
+                </div>
+            </div>
+            <div class="menuItemDetail">
+                <div class="menuDetailTitle">Add a game</div>
+                <div class="menuDetailMessage">
+                    Add a game by choosing a location.
+                </div>
+
+            </div>
+        </div>
+        <div class="addGame">
+            <div class="addGameContainer">
+                <div class="addGameTitle">Add Game</div>
+                <div class="addGameInner">
+                    <p>Choose a game executable file or a shortcut.</p>
+                    <br>
+                    <input id="location" type="text" placeholder="Location">
+                    <div class="browsebutton" onclick="browseButton()">Browse</div>
+                    <div>
+                        <div class="button" onclick="addButton()">Add</div>
+                        <div class="button" onclick="$('.addGame').fadeOut(); currentScreen = 'homeScreen';">Close</div>
+                    </div>
+                </div>
+                <input style="display:none;" id="LocateGame" type="file" />
+            </div>
+        </div>
+
+
+        <div class="somethingWentWrongPopout">
+            <div class="somethingWentWrongInner">
+                <h1>Something went wrong</h1>
+                <p>Try again later.</p>
+                <div class="somethingWentWrongButton" onclick="$('.somethingWentWrongPopout').fadeOut(); currentScreen = 'homeScreen'">OK :(</div>
+            </div>
+        </div>
+
+
+        <div class="detectFailPopOut">
+            <div class="detectFailInner">
+                <h2>Your game could not be detected :(</h2>
+                <p>Try finding it your self in the list or make your own.</p>
+                <div class="gamesList">
+                    <textarea class="searchGameBox" placeholder="Search game"></textarea>
+                    <div class="gameSearchList">
+
+
+                    </div>
+                </div>
+                <div class="makeMyOwnButton" onclick="makeMyOwnButton()">Make my own</div>
+            </div>
+        </div>
+
+
+        <div class="popOutNotification">
+            <div class="material-icons popOutNotificationIcon">
                 notifications
             </div>
-            <div class="notificationContent">
-                <div class="notificationInner">
-                    This is a notification!
-                </div>
+            <div class="popOutNotificationInner">
+                <div class="notificationTitle">Test Notification</div>
+                <div class="notificationMessage">Hi</div>
             </div>
         </div>
-
-        <div class="time">
-            00:00
-        </div>
-        <div class="closeManagerButton" onclick="nw.App.closeAllWindows();">
-            <i class="material-icons closeManagerIcon">
-                power_settings_new
-                </i>
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="menuItems">
-            <div class="addGameItem menuItem selectedMenuItem" id="addGameItem">
-                <div class="gameItemArt">
-                    <div class="material-icons gameItemIcon">
-                        add
-                    </div>
-                </div>
-                <div class="title">
-                    Add a game
-                </div>
-            </div>
-            <div class="settingsItem menuItem" id="settingsItem">
-                <div class="gameItemArt">
-                    <div class="material-icons gameItemIcon">
-                        settings
-                    </div>
-                </div>
-                <div class="title">
-                    Settings
-                </div>
-            </div>
-        </div>
-        <div class="menuItemDetail">
-            <div class="menuDetailTitle">Add a game</div>
-            <div class="menuDetailMessage">
-                Add a game by choosing a location.
-            </div>
-
-        </div>
-    </div>
-    <div class="addGame">
-        <div class="addGameContainer">
-            <div class="addGameTitle">Add Game</div>
-
-            <label for="location">Location</label>
-            <br>
-            <input id="location" type="text" placeholder="Location">
-            <div class="browsebutton" onclick="browseButton()">Browse</div>
-            <div>
-                <div class="button" onclick="addButton()">Add</div>
-                <div class="button closeButton" onclick="$('.addGame').fadeOut(); currentScreen = 'homeScreen';">Close</div>
-            </div>
-
-        </div>
     </div>
 
 
-    <div class="somethingWentWrongPopout">
-        <div class="somethingWentWrongInner">
-            <h1>Something went wrong</h1>
-            <p>Try again later.</p>
-            <div class="somethingWentWrongButton" onclick="$('.somethingWentWrongPopout').fadeOut(); currentScreen = 'homeScreen'">OK :(</div>
-        </div>
+    <div class="startup">
+        <div class="circle-one"></div>
+        <div class="circle-two"></div>
+        <div class="startup-name">Game Manager</div>
+    </div>
+    
+    <div class="particles">
+        <div id="particles-js"></div>
     </div>
 
-
-    <div class="detectFailPopOut">
-        <div class="detectFailInner">
-            <h2>Your game could not be detected :(</h2>
-            <p>Try finding it your self in the list or make your own.</p>
-            <div class="gamesList">
-                <textarea class="searchGameBox" placeholder="Search game"></textarea>
-                <div class="gameSearchList">
-
-
-                </div>
-            </div>
-            <div class="makeMyOwnButton" onclick="makeMyOwnButton()">Make my own</div>
-        </div>
-    </div>
-
-    <div class="noticePopOut">
-        <div class="noticeInner">
-            <h1>Note!</h1>
-            <p>When browsing a game, make sure you are choosing an .exe file. These exe files can be found in the steamapps/common
-                folder.
-            </p>
-            <div class="noticeButton" onclick="understoodButton()">Understood</div>
-            <input style="display:none;" id="LocateGame" type="file" />
-        </div>
-    </div>
-
-    <div class="popOutNotification">
-        <div class="material-icons popOutNotificationIcon">
-            notifications
-        </div>
-        <div class="popOutNotificationInner">
-            <div class="notificationTitle">Test Notification</div>
-            <div class="notificationMessage">Hi</div>
-        </div>
-    </div>
 </body>
+
 <script src="js/main.js"></script>
 <script src="js/UserDataManager.js"></script>
 <script src="js/NotificationHandle.js"></script>
 <script src="js/MenuItems.js"></script>
 <script src="js/TimeHandle.js"></script>
+<script src="js/BootUp.js"></script>
+
 
 <script src="js/AddGame.js"></script>
 

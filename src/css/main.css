@@ -5,7 +5,11 @@ body {
     width: 100%;
     overflow: hidden;
     height: 100%;
-    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)
+    background: black;
+    transition: 0.5s;
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+
+    transform: scale(0.9);
 }
 
 .notification {
@@ -110,6 +114,7 @@ body {
     user-select: none;
     cursor: default;
     z-index: 99;
+    opacity: 0;
 }
 
 .popOutNotificationIcon {
@@ -163,7 +168,7 @@ body {
 .menuItem {
     height: 300px;
     width: 300px;
-    border: solid 3px rgba(0, 0, 0, 0.308);
+    border: solid 3px rgba(0, 0, 0, 0);
     display: inline-block;
     vertical-align: top;
     margin-left: 20px;
@@ -239,7 +244,7 @@ body {
 }
 
 .addGame {
-    background-color: rgba(0, 0, 0, 0.795);
+    background-color: rgba(0, 0, 0, 0.904);
     height: 100%;
     width: 100%;
     position: fixed;
@@ -249,8 +254,7 @@ body {
 
 .addGameContainer {
     width: 500px;
-    height: 200px;
-    background-color: rgba(255, 255, 255, 0.781);
+    height: 325px;
     position: absolute;
     left: 0;
     right: 0;
@@ -267,20 +271,34 @@ body {
 }
 
 .addGameTitle {
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 45px;
     padding-top: 10px;
     padding-bottom: 10px;
+    color: white;
+}
+.addGameInner{
+    border-top: solid 1px white;
+    border-bottom: solid 1px white;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    color: white;
+    width: 370px;
+    margin: auto;
 }
 
 .browsebutton {
     display: inline-block;
-    background: rgba(0, 0, 0, 0.514);
     padding: 5px;
     color: white;
     margin-left: 5px;
     vertical-align: -5;
+    border: solid 1px white;
+    background-color: rgba(255, 255, 255, 0.24);
+    animation: border-pulsate 1s infinite;
 }
+
+
+
 
 label {
     margin-left: -180px;
@@ -420,7 +438,6 @@ input[type=text] {
     color: black;
 }
 .button{
-    background-color: #479ff5;
     width: 60px;
     padding: 10px;
     color: white;
@@ -429,10 +446,11 @@ input[type=text] {
     margin-top: 15px;
     cursor: default;
     display: inline-block;
+    border: solid 1px white;
+    background-color: rgba(255, 255, 255, 0.24);
+    animation: border-pulsate 1s infinite;
 }
-.closeButton{
-    background-color: rgb(255, 65, 65);
-}
+
 .searchGameBox{
     font-family: 'Roboto', sans-serif;
     border: none;
@@ -475,4 +493,59 @@ input[type=text] {
 }
 .gameSearchItem:hover{
     background-color: rgb(185, 185, 185);
+}
+.allContent{
+    display: none;
+    z-index: 999;
+}
+.startup{
+    position: fixed;
+    z-index: 999999999999999999999999;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s;
+}
+.particles{
+    position: fixed;
+    z-index: -11;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transform: .5s;
+}
+
+.circle-one{
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.445);
+    display: inline-block;
+    position: fixed;
+    filter: blur(1.5rem);
+}
+
+.circle-two{
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.445);;
+    display: inline-block;
+    position: fixed;
+    right: 0;
+    filter: blur(1.5rem);
+    
+}
+.startup-name{
+
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    text-shadow: 2px 2px 17px rgba(0, 0, 0, 0.459);
+    transition: 1s;
 }

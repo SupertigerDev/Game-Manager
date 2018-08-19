@@ -3,7 +3,6 @@ var execFile = require('child_process').execFile,
     child;
 const request = require('request'),
     url = 'https://www.jasonbase.com/things/WYJw.json'
-bootUpSound()
 const path = require('path')
 //const store = new Store();
 var jsonGamesList;
@@ -14,25 +13,27 @@ var fadeOutTimerID;
 
 var currentlySwitchingTimeOut = false;
 
-getSettings("gameList", function (cb) {
-    if (typeof cb == "undefined") {
-        totalMenus.push({
-            div: "addGameItem",
-            name: "Add a game"
-        })
-        totalMenus.push({
-            div: "settingsItem",
-            name: "Settings"
-        })
-        saveSettings("gameList", totalMenus, function () {
-            console.log('Settings saved');
-        });
-
-    } else {
-        totalMenus = cb
-    }
-    updateGamesList()
-})
+function bootup(){
+    getSettings("gameList", function (cb) {
+        if (typeof cb == "undefined") {
+            totalMenus.push({
+                div: "addGameItem",
+                name: "Add a game"
+            })
+            totalMenus.push({
+                div: "settingsItem",
+                name: "Settings"
+            })
+            saveSettings("gameList", totalMenus, function () {
+                console.log('Settings saved');
+            });
+    
+        } else {
+            totalMenus = cb
+        }
+        updateGamesList()
+    })
+}
 
 
 selectedItem = 0;
@@ -256,10 +257,7 @@ function nextMenuSoundPlay() {
     audio.play();
 }
 
-function bootUpSound() {
-    var audio = new Audio('sounds/BootUp.mp3');
-    audio.play();
-}
+
 
 function GameOpenSound() {
     var audio = new Audio('sounds/GameOpenSound.mp3');
