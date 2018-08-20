@@ -144,7 +144,7 @@ function openGame() {
                 $(".addGame").fadeIn();
                 console.log("Got a response ")
             } else {
-                console.log("Got an error: ", error, ", status code: ", response.statusCode)
+                console.log("Got an error: ", error)
                 $('.somethingWentWrongPopout').fadeIn()
                 currentScreen = "somethingWentWrong"
             }
@@ -207,7 +207,7 @@ function updateGamesList() {
             console.log("Got a response ")
             AddGamesToDiv()
         } else {
-            console.log("Got an error: ", error, ", status code: ", response.statusCode)
+            console.log("Got an error: ", error)
             AddToNotificationQueue("Game List", "Game list update has failed.", "icon")
             gamelistUpdated = true;
             AddGamesToDiv()

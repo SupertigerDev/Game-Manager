@@ -61,8 +61,9 @@ setTimeout(() => {
 
 
 setTimeout(() => {
-    bootup()
+
     $(".startup").fadeOut(300,function(){
+        bootup()
         $(".allContent").fadeIn();
         $("body").css("transform", "scale(1)")
         setTimeout(() => {

@@ -95,17 +95,20 @@
 
 
         <div class="detectFailPopOut">
-            <div class="detectFailInner">
-                <h2>Your game could not be detected :(</h2>
-                <p>Try finding it your self in the list or make your own.</p>
-                <div class="gamesList">
-                    <textarea class="searchGameBox" placeholder="Search game"></textarea>
-                    <div class="gameSearchList">
+            <div class="detectFailContainer">
+                <div class="addGameTitle">Game couldn't be detected</div>
+                <div class="detectFailInner">
+                    <p>Try finding it your self in the list or make your own.</p>
+                    <div class="gamesList">
+                        <textarea class="searchGameBox" placeholder="Search game"></textarea>
+                        <div class="gameSearchList">
 
 
+                        </div>
                     </div>
+                    <div class="button" style="width: 100px;" onclick="makeMyOwnButton()">Make my own</div>
+                    <div class="button" onclick="$('.detectFailPopOut').hide();$('.addGame').show(); ">Back</div>
                 </div>
-                <div class="makeMyOwnButton" onclick="makeMyOwnButton()">Make my own</div>
             </div>
         </div>
 

@@ -22,8 +22,8 @@ function addButton() {
         }
     }
     if (found == false) {
-        $(".detectFailPopOut").fadeIn();
-        $(".addGame").fadeOut();
+        $(".detectFailPopOut").show();
+        $(".addGame").hide();
     }
 
 }
