@@ -8,11 +8,9 @@
     "icon": "icon.png",
     "toolbar": false,
     "frame": true,
-    "kiosk": true 
+    "kiosk": true
   },
   "dependencies": {
-    "electron": "^2.0.7",
-    "electron-store": "^2.0.0",
     "regedit": "^3.0.0",
     "request": "^2.87.0",
     "requests": "^0.2.2"
