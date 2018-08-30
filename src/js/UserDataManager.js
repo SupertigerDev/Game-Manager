@@ -29,3 +29,20 @@ function getSettings(name ,callback) {
         }
     });
 }
+
+function addImage(imageLocation){
+    let fpath = nw.App.dataPath + "/gameData";
+    let id = randomID();
+
+    if (!fs.existsSync(fpath)){
+        fs.mkdirSync(fpath);
+    }
+
+    fs.createReadStream(imageLocation).pipe(fs.createWriteStream(fpath + "/"+ id + path.extname(imageLocation) ));
+    return fpath + "/" + id + path.extname(imageLocation);
+
+}
+
+function randomID() {
+    return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
+}

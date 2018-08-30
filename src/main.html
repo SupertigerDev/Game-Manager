@@ -67,50 +67,15 @@
 
             </div>
         </div>
-        <div class="addGame">
-            <div class="addGameContainer">
-                <div class="addGameTitle">Add Game</div>
-                <div class="addGameInner">
-                    <p>Choose a game executable file or a shortcut.</p>
-                    <br>
-                    <input id="location" type="text" placeholder="Location">
-                    <div class="browsebutton" onclick="browseButton()">Browse</div>
-                    <div>
-                        <div class="button" onclick="addButton()">Add</div>
-                        <div class="button" onclick="$('.addGame').fadeOut(); currentScreen = 'homeScreen';">Close</div>
-                    </div>
-                </div>
-                <input style="display:none;" id="LocateGame" type="file" />
-            </div>
-        </div>
 
 
-        <div class="somethingWentWrongPopout">
-            <div class="somethingWentWrongInner">
-                <h1>Something went wrong</h1>
-                <p>Try again later.</p>
-                <div class="somethingWentWrongButton" onclick="$('.somethingWentWrongPopout').fadeOut(); currentScreen = 'homeScreen'">OK :(</div>
-            </div>
-        </div>
 
 
-        <div class="detectFailPopOut">
-            <div class="detectFailContainer">
-                <div class="addGameTitle">Game couldn't be detected</div>
-                <div class="detectFailInner">
-                    <p>Try finding it your self in the list or make your own.</p>
-                    <div class="gamesList">
-                        <textarea class="searchGameBox" placeholder="Search game"></textarea>
-                        <div class="gameSearchList">
 
 
-                        </div>
-                    </div>
-                    <div class="button" style="width: 100px;" onclick="makeMyOwnButton()">Make my own</div>
-                    <div class="button" onclick="$('.detectFailPopOut').hide();$('.addGame').show(); ">Back</div>
-                </div>
-            </div>
-        </div>
+
+
+
 
 
         <div class="popOutNotification">
@@ -143,8 +108,10 @@
 <script src="js/MenuItems.js"></script>
 <script src="js/TimeHandle.js"></script>
 <script src="js/BootUp.js"></script>
+<script src="js/AddCustomGame.js"></script>
 
 <script src="js/SearchForGames.js"></script>
+<script src="js/Global.js"></script>
 
 
 </html>
