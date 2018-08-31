@@ -8,13 +8,14 @@ body {
     background: black;
     transition: 0.5s;
     background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-
     transform: scale(0.9);
 }
-textarea{
+
+textarea {
     font-family: 'Roboto', sans-serif;
     padding: 10px;
 }
+
 .notification {
     margin-top: 40px;
     margin-left: 40px;
@@ -67,8 +68,6 @@ textarea{
     line-height: 3.2;
 }
 
-
-
 .time {
     background: rgba(0, 0, 0, 0.164);
     padding: 10px;
@@ -80,7 +79,8 @@ textarea{
     user-select: none;
     cursor: default;
 }
-.closeManagerButton{
+
+.closeManagerButton {
     background: rgba(0, 0, 0, 0.164);
     padding: 10px;
     margin-top: 40px;
@@ -92,14 +92,16 @@ textarea{
     float: right;
     transition: .2s;
 }
-.closeManagerButton:hover{
+
+.closeManagerButton:hover {
     background: rgba(255, 46, 46, 0.404);
 }
-.closeManagerIcon{
+
+.closeManagerIcon {
     color: white;
     font-size: 40px;
-
 }
+
 .popOutNotification {
     position: fixed;
     z-index: 999999999;
@@ -179,11 +181,18 @@ textarea{
     transition: 0.5s;
 }
 
-
 @keyframes border-pulsate {
-    0%   { border-color: rgba(165, 165, 165, 0.308);}
-    50%  {  border-color: rgb(255, 255, 255); }
-    100% {border-color: rgba(165, 165, 165, 0.308);}
+    0% {
+        border-color: rgba(165, 165, 165, 0.308);
+    }
+
+    50% {
+        border-color: rgb(255, 255, 255);
+    }
+
+    100% {
+        border-color: rgba(165, 165, 165, 0.308);
+    }
 }
 
 .selectedMenuItem {
@@ -193,8 +202,6 @@ textarea{
     transform: scale(1.1);
     animation: border-pulsate 1s infinite;
 }
-
-
 
 .gameItemIcon {
     font-size: 200px;
@@ -247,48 +254,12 @@ textarea{
     font-size: 15px;
 }
 
-.addGame {
-    background-color: rgba(0, 0, 0, 0.904);
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    z-index: 999999;
-    display: none;
-}
-
-.addGameContainer {
-    width: 500px;
-    height: 325px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    max-width: 100%;
-    max-height: 100%;
-    overflow: auto;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.678);
-    user-select: none;
-    cursor: default;
-}
-
 .addGameTitle {
     font-size: 45px;
     padding-top: 10px;
     padding-bottom: 10px;
     color: white;
     text-align: center;
-}
-.addGameInner{
-    border-top: solid 1px white;
-    border-bottom: solid 1px white;
-    padding-bottom: 30px;
-    padding-top: 30px;
-    color: white;
-    width: 370px;
-    margin: auto;
 }
 
 .browsebutton {
@@ -302,55 +273,6 @@ textarea{
     animation: border-pulsate 1s infinite;
 }
 
-
-
-
-.notificationList {
-    background-color: rgba(0, 0, 0, 0.904);
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    z-index: 999999;
-    
-
-}
-
-.notificationListContainer {
-    width: 704px;
-    height: 534px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    max-width: 100%;
-    max-height: 100%;
-    overflow: auto;
-    color: rgba(0, 0, 0, 0.678);
-    user-select: none;
-    cursor: default;
-}
-
-
-.notificationListInner{
-    border-top: solid 1px white;
-    border-bottom: solid 1px white;
-    padding: 10px;
-    color: white;
-    width: 676px;
-    margin: auto;
-}
-
-
-
-
-
-
-
-
-
-
 .global {
     background-color: rgba(0, 0, 0, 0.904);
     height: 100%;
@@ -358,8 +280,6 @@ textarea{
     position: fixed;
     z-index: 999999;
     display: none;
-    
-
 }
 
 .globalContainer {
@@ -379,8 +299,7 @@ textarea{
     cursor: default;
 }
 
-
-.globalInner{
+.globalInner {
     border-top: solid 1px white;
     border-bottom: solid 1px white;
     padding: 10px;
@@ -389,33 +308,20 @@ textarea{
     margin: auto;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-#menuadd-custom-game .leftContainer{
+#menuadd-custom-game .leftContainer {
     width: 330px;
     display: inline-block;
     vertical-align: top;
     margin-right: 10px;
 }
 
-#menuadd-custom-game .rightContainer{
+#menuadd-custom-game .rightContainer {
     width: 330px;
     display: inline-block;
     vertical-align: top;
 }
 
-#menuadd-custom-game .image{
+#menuadd-custom-game .image {
     margin-top: 5px;
     height: 30px;
     width: 50px;
@@ -425,20 +331,23 @@ textarea{
     background-size: 100%;
     background-repeat: no-repeat
 }
-#menuadd-custom-game .text:hover{
+
+#menuadd-custom-game .text:hover {
     opacity: 1;
 }
-#menuadd-custom-game .gameArt{
+
+#menuadd-custom-game .gameArt {
     width: 100px;
     height: 100px;
     border: solid 1px white;
     margin: auto;
-    margin-bottom: 20px; 
-    margin-top: 20px; 
+    margin-bottom: 20px;
+    margin-top: 20px;
     background-size: 100%;
     background-repeat: no-repeat
 }
-#menuadd-custom-game .text{
+
+#menuadd-custom-game .text {
     text-align: center;
     background: rgba(255, 0, 0, 0.281);
     height: calc(100% - 3px);
@@ -465,135 +374,22 @@ input[type=text] {
     vertical-align: middle;
 }
 
-.noticePopOut {
-    background-color: rgba(0, 0, 0, 0.61);
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    z-index: 999999999999999;
-    display: none;
-}
-
-.noticeInner {
-    width: 400px;
-    height: 250px;
-    background-color: rgba(255, 255, 255, 0.781);
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    padding: 10px;
-    max-width: 100%;
-    max-height: 100%;
-    overflow: auto;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.678);
-    user-select: none;
-    cursor: default;
-}
-
-.noticeButton {
-    background-color: rgb(255, 72, 72);
-    color: white;
-    padding: 10px;
-    display: inline-block;
-}
-
-.somethingWentWrongPopout {
-    background-color: rgba(0, 0, 0, 0.61);
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    z-index: 999999;
-    display: none;
-}
-
-.somethingWentWrongInner {
-    width: 400px;
-    height: 250px;
-    background-color: rgba(255, 255, 255, 0.781);
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    padding: 10px;
-    max-width: 100%;
-    max-height: 100%;
-    overflow: auto;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.678);
-    user-select: none;
-    cursor: default;
-}
-
-.somethingWentWrongButton {
-    background-color: rgb(255, 72, 72);
-    color: white;
-    padding: 10px;
-    display: inline-block;
-}
-
-.detectFailPopOut {
-    background-color: rgba(0, 0, 0, 0.904);
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    z-index: 999999;
-    display: none;
-}
-
-.detectFailContainer {
-    width: 542px;
-    height: 352px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    max-width: 100%;
-    max-height: 100%;
-    overflow: auto;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.678);
-    user-select: none;
-    cursor: default;
-}
-.detectFailInner{
-    border-top: solid 1px white;
-    border-bottom: solid 1px white;
-    padding-bottom: 30px;
-    padding-top: 30px;
-    color: white;
-    width: 542px;
-    margin: auto;
-}
-
-
-.makeMyOwnButton {
-    background-color: rgb(255, 72, 72);
-    color: white;
-    padding: 10px;
-    display: inline-block;
-}
-.backgroundImage{
+.backgroundImage {
     position: fixed;
     width: 100%;
     height: 100%;
     z-index: -1;
     background-size: cover;
     background-repeat: no-repeat;
-
 }
-.addGameItem .title, .settingsItem .title {
+
+.addGameItem .title,
+.settingsItem .title {
     background: #ffffff;
     color: black;
 }
-.button{
+
+.button {
     width: 60px;
     padding: 10px;
     color: white;
@@ -608,7 +404,7 @@ input[type=text] {
     text-align: center;
 }
 
-.searchGameBox{
+.searchGameBox {
     font-family: 'Roboto', sans-serif;
     border: none;
     outline: none;
@@ -616,13 +412,14 @@ input[type=text] {
     font-size: 20px;
     height: 46px;
     padding: 10px;
+}
 
-}
-.gamesList{
+.gamesList {
     margin-bottom: 10px;
     margin-bottom: 10px;
 }
-.gameSearchIcon{
+
+.gameSearchIcon {
     height: 30px;
     width: 30px;
     background: red;
@@ -631,13 +428,14 @@ input[type=text] {
     background-size: 100%;
 }
 
-.gameSeachTitle{
+.gameSeachTitle {
     display: inline-block;
     vertical-align: middle;
     margin-left: 5px;
     color: black;
 }
-.gameSearchList{
+
+.gameSearchList {
     background: #f3f3f3f0;
     width: 237px;
     position: fixed;
@@ -645,18 +443,22 @@ input[type=text] {
     margin-left: -118.5px;
     border-top: solid 1px #9e9e9e;
 }
-.gameSearchItem{
+
+.gameSearchItem {
     padding: 5px;
     text-align: left;
 }
-.gameSearchItem:hover{
+
+.gameSearchItem:hover {
     background-color: rgb(185, 185, 185);
 }
-.allContent{
+
+.allContent {
     display: none;
     z-index: 999;
 }
-.startup{
+
+.startup {
     position: fixed;
     z-index: 999999999999999999999999;
     height: 100%;
@@ -664,7 +466,8 @@ input[type=text] {
     opacity: 0;
     transition: .5s;
 }
-.particles{
+
+.particles {
     position: fixed;
     z-index: -11;
     height: 100%;
@@ -673,7 +476,7 @@ input[type=text] {
     transform: .5s;
 }
 
-.circle-one{
+.circle-one {
     border-radius: 50%;
     height: 100%;
     width: 100%;
@@ -683,19 +486,19 @@ input[type=text] {
     filter: blur(1.5rem);
 }
 
-.circle-two{
+.circle-two {
     border-radius: 50%;
     height: 100%;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.445);;
+    background-color: rgba(255, 255, 255, 0.445);
+    ;
     display: inline-block;
     position: fixed;
     right: 0;
     filter: blur(1.5rem);
-    
 }
-.startup-name{
 
+.startup-name {
     color: white;
     font-weight: bold;
     font-size: 40px;

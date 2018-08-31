@@ -11,9 +11,12 @@ var gamelistUpdated = false;
 var totalMenus = []
 var fadeOutTimerID;
 
-var currentlySwitchingTimeOut = false;
+var switchBackgroundID;
+var menuSwitchTimeout = null;
 
-function bootup(){
+
+
+function bootup() {
     getSettings("gameList", function (cb) {
         if (typeof cb == "undefined") {
             totalMenus.push({
@@ -27,7 +30,7 @@ function bootup(){
             saveSettings("gameList", totalMenus, function () {
                 console.log('Settings saved');
             });
-    
+
         } else {
             totalMenus = cb
         }
@@ -50,10 +53,17 @@ $(document).keydown(function (e) {
             openGame();
         }
 
-        if (currentlySwitchingTimeOut) {
+        if (menuSwitchTimeout == null) {
+            menuSwitchTimeout = setTimeout(() => {
+                clearTimeout(menuSwitchTimeout);
+                menuSwitchTimeout = null;
+            }, 100);
+        } else {
             return;
         }
+
         if (e.keyCode == 39) {
+
             if (typeof totalMenus[selectedItem + 1] == "undefined") {
                 return;
             }
@@ -65,9 +75,7 @@ $(document).keydown(function (e) {
 
             $(".menuItems").animate({
                 marginLeft: "-=330"
-            }, 100, function () {
-                currentlySwitchingTimeOut = false
-            })
+            }, 100)
 
 
         } else if (e.keyCode == 37) {
@@ -77,9 +85,7 @@ $(document).keydown(function (e) {
 
             $(".menuItems").animate({
                 marginLeft: "+=330"
-            }, 100, function () {
-                currentlySwitchingTimeOut = false
-            })
+            }, 100)
 
 
             selectedItem--;
@@ -108,20 +114,27 @@ function changedMenuItem() {
         title = totalMenus[selectedItem].name
         message = "To add a game, click on this icon and Choose an executable file."
     } else {
+        $('.backgroundImage').fadeOut(400);
+        clearTimeout(switchBackgroundID);
+        switchBackgroundID = setTimeout(() => {
 
-        let random = getRandomArray(totalMenus[selectedItem].background)
+            let random = getRandomArray(totalMenus[selectedItem].background)
 
-        $('<img/>').attr('src', random ).on('load', function () {
-            $(this).remove(); // prevent memory leaks.
-            $('.backgroundImage').fadeOut(400, function () {
-                $('.backgroundImage').css('background-image', 'linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)),url("' + random + '")');
+            $('<img/>').attr('src', random).on('load', function () {
+                $(this).remove(); // prevent memory leaks.
 
-                setTimeout(() => {
-                    $('.backgroundImage').fadeIn(300);
-                }, 400);
+
+
+
+                $('.backgroundImage').fadeIn(300);
+
+
+
             });
 
-        });
+        }, 1000);
+
+
 
         title = totalMenus[selectedItem].name
         message = totalMenus[selectedItem].description
@@ -145,7 +158,7 @@ function openGame() {
                 currentScreen = "Add a game"
                 //$(".addGame").fadeIn();
                 content = '<p>Choose a game executable file or a shortcut.</p><br><input id="location" type="text" placeholder="Location"> <div class="browsebutton" onclick="browseButton()">Browse</div><div><div class="button" onclick="addButton()">Add</div> <div class="button" onclick="closeMenu(\'add-game\', true); closeMenu(\'detect-fail\', true);currentScreen = \'homeScreen\';">Close</div></div><input style="display:none;" id="LocateGame" type="file" />'
-                appendMenu("add-game","Add Game", content, true,true,583, 302,498, 199)
+                appendMenu("add-game", "Add Game", content, true, true, 583, 302, 498, 199)
                 console.log("Got a response ")
             } else {
                 console.log("Got an error: ", error)
@@ -259,4 +272,3 @@ function GameOpenSound() {
     var audio = new Audio('sounds/GameOpenSound.mp3');
     audio.play();
 }
-
