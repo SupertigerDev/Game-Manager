@@ -20,7 +20,7 @@ function LoopNotification() {
     NotifyLoopRunning = true;
 
     $(".notificationInner").css("margin-left", "350px")
-    $(".notificationInner").text(notificationQueue[currentNotification].message)
+    $(".notificationInner").html( "<b>"+notificationQueue[currentNotification].title+": </b>"+ notificationQueue[currentNotification].message)
 
     var curleft = $('.notificationInner').position().left;
     var duration = ($('.notificationInner').outerWidth() + curleft) * 1000 / 50;

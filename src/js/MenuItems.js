@@ -122,9 +122,7 @@ function changedMenuItem() {
 
             $('<img/>').attr('src', random).on('load', function () {
                 $(this).remove(); // prevent memory leaks.
-
-
-
+                $('.backgroundImage').css('background-image', 'linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)),url(' + getRandomArray(totalMenus[selectedItem].background) + ')');
 
                 $('.backgroundImage').fadeIn(300);
 
@@ -151,11 +149,11 @@ function changedMenuItem() {
 function openGame() {
     GameOpenSound()
     if (totalMenus[selectedItem].name == "Add a game") {
-
+        currentScreen = "Add a game"
         request(url, (error, response, body) => {
             if (!error && response.statusCode === 200) {
                 jsonGamesList = JSON.parse(body)
-                currentScreen = "Add a game"
+
                 //$(".addGame").fadeIn();
                 content = '<p>Choose a game executable file or a shortcut.</p><br><input id="location" type="text" placeholder="Location"> <div class="browsebutton" onclick="browseButton()">Browse</div><div><div class="button" onclick="addButton()">Add</div> <div class="button" onclick="closeMenu(\'add-game\', true); closeMenu(\'detect-fail\', true);currentScreen = \'homeScreen\';">Close</div></div><input style="display:none;" id="LocateGame" type="file" />'
                 appendMenu("add-game", "Add Game", content, true, true, 583, 302, 498, 199)
