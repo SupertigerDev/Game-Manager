@@ -66,10 +66,6 @@ setTimeout(() => {
         bootup()
         $(".allContent").fadeIn();
         $("body").css("transform", "scale(1)")
-        setTimeout(() => {
-            $(".popOutNotification").css("opacity", "1")
-
-        }, 500);
     });
 }, 3000);
 

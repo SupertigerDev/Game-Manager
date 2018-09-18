@@ -47,10 +47,12 @@ function sendNotification(title, message, icon) {
     messageDiv.text(message)
     notifySound()
     mainDiv.animate({
-        marginLeft: 0
+        marginLeft: 0,
+        opacity: 1
     }, function () {
         setTimeout(() => {
             mainDiv.animate({
+                opacity: 0,
                 marginLeft: -300
             }, function () {
                 setTimeout(() => {

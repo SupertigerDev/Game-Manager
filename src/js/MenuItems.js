@@ -5,7 +5,7 @@ const request = require('request'),
     url = 'https://www.jasonbase.com/things/WYJw.json'
 const path = require('path')
 //const store = new Store();
-var jsonGamesList;
+var jsonGamesList = undefined;
 var selectedItem;
 var gamelistUpdated = false;
 var totalMenus = []
@@ -51,6 +51,9 @@ $(document).keydown(function (e) {
 
         if (e.keyCode == 13) {
             openGame();
+        }
+        if (e.keyCode == 78) {
+            openNotificationMenu();
         }
 
         if (menuSwitchTimeout == null) {
@@ -118,11 +121,11 @@ function changedMenuItem() {
         clearTimeout(switchBackgroundID);
         switchBackgroundID = setTimeout(() => {
 
-            let random = getRandomArray(totalMenus[selectedItem].background)
+            let random = getRandomArray(totalMenus[selectedItem].background).replace(/ /g,"%20");
 
             $('<img/>').attr('src', random).on('load', function () {
                 $(this).remove(); // prevent memory leaks.
-                $('.backgroundImage').css('background-image', 'linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)),url(' + getRandomArray(totalMenus[selectedItem].background) + ')');
+                $('.backgroundImage').css('background-image', 'linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)),url(' + random + ')');
 
                 $('.backgroundImage').fadeIn(300);
 
@@ -149,24 +152,33 @@ function changedMenuItem() {
 function openGame() {
     GameOpenSound()
     if (totalMenus[selectedItem].name == "Add a game") {
+
         currentScreen = "Add a game"
-        request(url, (error, response, body) => {
-            if (!error && response.statusCode === 200) {
-                jsonGamesList = JSON.parse(body)
 
-                //$(".addGame").fadeIn();
-                content = '<p>Choose a game executable file or a shortcut.</p><br><input id="location" type="text" placeholder="Location"> <div class="browsebutton" onclick="browseButton()">Browse</div><div><div class="button" onclick="addButton()">Add</div> <div class="button" onclick="closeMenu(\'add-game\', true); closeMenu(\'detect-fail\', true);currentScreen = \'homeScreen\';">Close</div></div><input style="display:none;" id="LocateGame" type="file" />'
-                appendMenu("add-game", "Add Game", content, true, true, 583, 302, 498, 199)
-                console.log("Got a response ")
-            } else {
-                console.log("Got an error: ", error)
-                //$('.somethingWentWrongPopout').fadeIn()
-                somethingWrong("There is no internet connection right now.");
+        if (jsonGamesList != undefined) {
+            content = '<p>Choose a game executable file or a shortcut.</p><br><input id="location" type="text" placeholder="Location"> <div class="browsebutton" onclick="browseButton()">Browse</div><div><div class="button" onclick="addButton()">Add</div> <div class="button" onclick="closeMenu(\'add-game\', true); closeMenu(\'detect-fail\', true);currentScreen = \'homeScreen\';">Close</div></div><input style="display:none;" id="LocateGame" type="file" />'
+            appendMenu("add-game", "Add Game", content, true, true, 583, 302, 498, 199)
+            return;
+        } else {
+            fadeOutMenu(() => {
+                request(url, (error, response, body) => {
+                    if (!error && response.statusCode === 200) {
+                        jsonGamesList = JSON.parse(body)
 
-                currentScreen = "somethingWentWrong"
-            }
-        })
+                        content = '<p>Choose a game executable file or a shortcut.</p><br><input id="location" type="text" placeholder="Location"> <div class="browsebutton" onclick="browseButton()">Browse</div><div><div class="button" onclick="addButton()">Add</div> <div class="button" onclick="closeMenu(\'add-game\', true); closeMenu(\'detect-fail\', true);currentScreen = \'homeScreen\';">Close</div></div><input style="display:none;" id="LocateGame" type="file" />'
+                        appendMenu("add-game", "Add Game", content, true, true, 583, 302, 498, 199)
+                        console.log("Got a response ")
 
+
+                    } else {
+                        console.log("Got an error: ", error)
+                        somethingWrong("There is no internet connection right now.");
+                        currentScreen = "somethingWentWrong"
+                    }
+                })
+            });
+
+        }
 
     } else if (totalMenus[selectedItem].name == "Settings") {
         //add settings menu in the future.
@@ -206,6 +218,7 @@ function updateGamesList() {
     request(url, (error, response, body) => {
         if (!error && response.statusCode === 200) {
             let newGameList = JSON.parse(body)
+            jsonGamesList = newGameList;
 
             for (var field in newGameList) {
                 for (var i in totalMenus) {
@@ -257,6 +270,38 @@ function fadeOutIdle() {
     fadeOutTimerID = setTimeout(() => {
         $(".content").css("opacity", "0")
     }, 20000);
+}
+
+function fadeOutMenu(cb) {
+    $(".allContent").animate({
+        opacity: 0
+    }, 30, () => {
+        setTimeout(() => {
+            $(".allContent").css("transform", "scale(1)")
+
+        }, 400);
+    })
+    $(".allContent").css("transform", "scale(0.9)")
+
+    setTimeout(() => {
+        cb(true);
+    }, 700);
+}
+
+function fadeInMenu(cb) {
+    $(".allContent").css("transform", "scale(0.9)")
+    setTimeout(() => {
+
+
+        $(".allContent").animate({
+            opacity: 1
+        }, 30)
+        $(".allContent").css("transform", "scale(1)")
+    }, 400);
+
+    setTimeout(() => {
+        cb(true);
+    }, 700);
 }
 
 function nextMenuSoundPlay() {
